@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   awesome_icons: ^1.1.0
   font_awesome_flutter: ^10.8.0
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,7 @@ flutter:
   assets:
       - assets/images/pretium_finance_logo_final.png
       - assets/images/pretium_splash_screen.jpg
+      - assets/images/wallet_image.png
  
 
   # An image asset can refer to one or more resolution-specific "variants", see
