@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pretium_app/screens/forget_password.dart';
 import 'package:pretium_app/screens/register_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,8 +13,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -147,36 +147,77 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
+              
               const SizedBox(height: 25),
-
-              // Remember Me Checkbox
-              Row(
-                children: [
-                  Checkbox(
-                    value: _rememberMe,
-                    onChanged: (value) {
-                      setState(() {
-                        _rememberMe = value!;
-                      });
-                    },
+              RichText(
+                text: TextSpan(
+                  style: GoogleFonts.robotoCondensed(
+                    fontSize: 14,
+                    color: Colors.black,
                   ),
-                  Text(
-                    'Remember me', 
-                    style: GoogleFonts.robotoCondensed(
-                      fontWeight: FontWeight.w200,
-                      fontSize: 14,
+                  children: [
+                    // Simulate checkbox behavior
+                    WidgetSpan(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _rememberMe = !_rememberMe;
+                          });
+                        },
+                        child: Icon(
+                          _rememberMe ? Icons.check_box : Icons.check_box_outline_blank,
+                          size: 18,
+                           color: Colors.grey,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    const WidgetSpan(child: SizedBox(width: 8)),
+
+                    TextSpan(
+                      text: 'Remember me',
+                      style: GoogleFonts.robotoCondensed(
+                        fontWeight: FontWeight.w200,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          setState(() {
+                            _rememberMe = !_rememberMe;
+                          });
+                        },
+                    ),
+
+                    // Spacer
+                    const WidgetSpan(child: SizedBox(width: 160)),
+
+                    // Forget password
+                    TextSpan(
+                      text: 'Forgot Password?',
+                      style: GoogleFonts.robotoCondensed(
+                      color: const Color.fromARGB(255, 23, 100, 98),
+                      fontWeight: FontWeight.w600,
+                      
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ForgotPassword(),
+                                ),
+                            );
+                        },
+                    ),
+                  ],
+                ),
               ),
 
-                 const SizedBox(height: 25),
+              const SizedBox(height: 25),
               // Login Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 23, 100, 98),
+                    backgroundColor: const Color.fromRGBO(23, 100, 98, 1),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -191,21 +232,42 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               const SizedBox(height: 20),
-
               // Sign Up Link
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                  );
-                },
-                child: Text(
-                  "Don't have an account? Sign up",
-                    style: GoogleFonts.robotoCondensed(
-                      fontWeight: FontWeight.w200,
-                      fontSize: 14,
+              RichText(
+                text: TextSpan(
+                  style: GoogleFonts.robotoCondensed(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w200,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: "Don't have an account? ",
+                      style: GoogleFonts.robotoCondensed(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w200,
+                        color: Colors.grey[700],
+                      ),
                     ),
+                    WidgetSpan(child: SizedBox(width: 14)),
+                    TextSpan(
+                      text: "Sign up",
+                      style: GoogleFonts.robotoCondensed(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Color.fromARGB(255, 23, 100, 98),
+                      ),
+                      recognizer:
+                          TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const RegisterScreen(),
+                                ),
+                              );
+                            },
+                    ),
+                  ],
                 ),
               ),
             ],
