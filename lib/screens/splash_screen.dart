@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pretium_app/screens/login_screen.dart';
+import 'package:pretium_app/landing_pages/direct_pay.dart';
+// import 'package:pretium_app/screens/login_screen.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -15,7 +16,8 @@ class SplashScreenState extends State<SplashScreen> {
        Navigator.of(
             // ignore: use_build_context_synchronously
             context,
-          ).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+          // ).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+          ).push(MaterialPageRoute(builder: (context) => DirectPay()));
     });
   }
 
