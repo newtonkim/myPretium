@@ -187,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     // Spacer
-                    const WidgetSpan(child: SizedBox(width: 160)),
+                    const WidgetSpan(child: SizedBox(width: 100)),
 
                     // Forget password
                     TextSpan(
